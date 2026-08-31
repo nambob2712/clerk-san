@@ -28,7 +28,7 @@ mammoth>=1.8,<2.0
 python-docx>=1.1,<2.0
 openpyxl>=3.1,<4.0
 PyYAML>=6.0,<7.0
-pandas>=2.2,<3.0
+pandas>=3.0.5,<4.0
 
 # Duplicate detection, fixture generation, and benchmark memory metrics
 ImageHash>=4.3,<5.0
