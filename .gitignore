@@ -1,0 +1,46 @@
+# Streamlit secrets - DO NOT COMMIT
+.streamlit/secrets.toml
+uv.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Receipt data
+saved_receipts/
+receipt_history.csv
+.clerksan-*/
+backups/
+data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+.coverage
+htmlcov/
+test_coverage.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Clerk-san v2 (V2-056)
+__pycache__/
+*.pyc
+.env
+doc_store/
+eval/fixtures/synthetic/
+eval/results/*.json
+!eval/results/baseline.json

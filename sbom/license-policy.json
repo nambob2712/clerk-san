@@ -1,0 +1,753 @@
+{
+  "artifactCaveats": [
+    {
+      "purl": "pkg:pypi/pypdfium2@5.13.0",
+      "sourceClassification": "Apache-2.0 OR BSD-3-Clause",
+      "statement": "This is a source-project classification only. Every selected pypdfium2 wheel or other binary artifact requires platform-specific review of its bundled dependency licenses and separate artifact notices before redistribution."
+    }
+  ],
+  "artifactPolicy": {
+    "records": [],
+    "requireSeparateReview": true,
+    "statement": "This ledger approves source-lock references only. It records no wheel, sdist, emitted web bundle, container layer, service-image layer, operating-system package, or model-weight artifact."
+  },
+  "evidence": [
+    {
+      "bindings": {
+        "npmIdentitiesSha256": "e4aeff6dea3bcf50293650b5d7b87419ebc540199081ab08a7fc7f9d444cc63a",
+        "npmLockSha256": "30c583df20c2a1663a310cbc8dc67d6b4b2b828062fb1b3873093d9add7b1a39",
+        "policyMachineSha256": "0acf9d97ccd54c4b02ac35f6f144a46cf62482025e959624c71bff04213b5a40",
+        "pythonIdentitiesSha256": "6ebec811b8da87f69f679ae7472d5c813caa02a5691bb51a8c7be0712638f95a",
+        "pythonLockSha256": "114917732b509616ac1a6c23b2f9b5faed4b55f39f4f5cf5a1a94271b2c540f6"
+      },
+      "kind": "reviewed-source-license-evidence",
+      "locator": "sbom/source-license-review.md",
+      "sha256": "67188bfc54748ef7b785d6174580fddcae65e1410eed63a26abe785bed462189"
+    }
+  ],
+  "licenseRules": {
+    "allowedSpdxExpressions": [
+      "Apache-2.0",
+      "Apache-2.0 OR BSD-2-Clause",
+      "Apache-2.0 OR BSD-3-Clause",
+      "Apache-2.0 OR MIT",
+      "BSD-2-Clause",
+      "BSD-3-Clause",
+      "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+      "BSD-3-Clause OR Apache-2.0",
+      "BlueOak-1.0.0",
+      "CC0-1.0",
+      "ISC",
+      "MIT",
+      "MIT AND BSD-3-Clause",
+      "MIT AND PSF-2.0",
+      "MIT-0",
+      "MIT-CMU",
+      "MPL-2.0",
+      "PSF-2.0"
+    ],
+    "forbiddenFamilies": [
+      "AGPL",
+      "BUSL",
+      "EULA",
+      "GPL",
+      "LGPL",
+      "SSPL",
+      "UNLICENSED"
+    ],
+    "noAssertionValues": [
+      "",
+      "NONE",
+      "NOASSERTION"
+    ],
+    "npmMplAllowedScope": "development-build-test"
+  },
+  "locks": {
+    "npm": {
+      "expectedRows": 183,
+      "identityFields": [
+        "packageLockPath",
+        "purl"
+      ],
+      "path": "web/package-lock.json",
+      "sha256": "30c583df20c2a1663a310cbc8dc67d6b4b2b828062fb1b3873093d9add7b1a39"
+    },
+    "python": {
+      "expectedRows": 81,
+      "identityFields": [
+        "purl",
+        "normalizedMarkerIdentity"
+      ],
+      "path": "requirements.lock",
+      "sha256": "114917732b509616ac1a6c23b2f9b5faed4b55f39f4f5cf5a1a94271b2c540f6"
+    }
+  },
+  "npmDerivation": {
+    "licenseField": "packages[*].license",
+    "scopeRule": "packages[*].dev == true => development-build-test; otherwise production-lock-closure"
+  },
+  "pythonPackages": [
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/aiosqlite@0.22.1",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/altair@6.2.2",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/annotated-doc@0.0.5",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/annotated-types@0.8.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/anyio@4.14.2",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/asyncpg@0.31.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/attrs@26.1.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/blinker@1.9.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MPL-2.0",
+      "licenseDeclared": "MPL-2.0",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/certifi@2026.7.22",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/charset-normalizer@3.5.1",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/click@8.4.2",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-2-Clause",
+      "licenseDeclared": "BSD-2-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/cobble@0.1.4",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "sys_platform == \"win32\"",
+      "purl": "pkg:pypi/colorama@0.4.6",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/et-xmlfile@2.0.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/fastapi@0.141.1",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT AND PSF-2.0",
+      "licenseDeclared": "MIT AND PSF-2.0",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/greenlet@3.5.5",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/h11@0.16.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/httpcore@1.0.9",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/httptools@0.8.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/httpx@0.28.1",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/idna@3.19",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-2-Clause",
+      "licenseDeclared": "BSD-2-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/imagehash@4.3.2",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/iniconfig@2.3.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/itsdangerous@2.2.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/jinja2@3.1.6",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/jsonschema-specifications@2025.9.1",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/jsonschema@4.26.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/lxml@6.1.2",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-2-Clause",
+      "licenseDeclared": "BSD-2-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/mammoth@1.12.1",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/markupsafe@3.0.3",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/narwhals@2.25.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+      "licenseDeclared": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+      "normalizedMarkerIdentity": "python_full_version < \"3.12\"",
+      "purl": "pkg:pypi/numpy@2.4.6",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+      "licenseDeclared": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+      "normalizedMarkerIdentity": "python_full_version >= \"3.12\"",
+      "purl": "pkg:pypi/numpy@2.5.2",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/openpyxl@3.1.5",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "Apache-2.0 OR BSD-2-Clause",
+      "licenseDeclared": "Apache-2.0 OR BSD-2-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/packaging@26.3",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/pandas@2.3.3",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/pgvector@0.5.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT-CMU",
+      "licenseDeclared": "MIT-CMU",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/pillow@12.3.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/pluggy@1.6.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/protobuf@7.36.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/psutil@7.2.2",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/pyarrow@25.0.1",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/pydantic-core@2.46.4",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/pydantic-settings@2.15.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/pydantic@2.13.4",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/pydeck@0.9.3",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-2-Clause",
+      "licenseDeclared": "BSD-2-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/pygments@2.21.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/pypdf@6.16.2",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": true,
+      "licenseConcluded": "Apache-2.0 OR BSD-3-Clause",
+      "licenseDeclared": "Apache-2.0 OR BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/pypdfium2@5.13.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/pytest-asyncio@1.4.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/pytest@9.1.1",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause OR Apache-2.0",
+      "licenseDeclared": "BSD-3-Clause OR Apache-2.0",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/python-dateutil@2.9.0.post0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/python-docx@1.2.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/python-dotenv@1.2.3",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/python-magic@0.4.27",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/python-multipart@0.0.32",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/pytz@2026.3.post1",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT AND BSD-3-Clause",
+      "licenseDeclared": "MIT AND BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/pywavelets@1.9.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/pyyaml@6.0.3",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/rapidfuzz@3.14.5",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/referencing@0.37.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/requests@2.34.2",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/respx@0.23.1",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/rpds-py@2026.6.3",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/ruff@0.16.4",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "python_full_version < \"3.12\"",
+      "purl": "pkg:pypi/scipy@1.17.1",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "python_full_version >= \"3.12\"",
+      "purl": "pkg:pypi/scipy@1.18.1",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/six@1.17.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/sqlalchemy@2.0.52",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/starlette@1.6.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/streamlit@1.62.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/toml@0.10.2",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "PSF-2.0",
+      "licenseDeclared": "PSF-2.0",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/typing-extensions@4.16.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/typing-inspection@0.4.4",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/tzdata@2026.3",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/urllib3@2.7.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/uvicorn@0.52.4",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "Apache-2.0 OR MIT",
+      "licenseDeclared": "Apache-2.0 OR MIT",
+      "normalizedMarkerIdentity": "platform_python_implementation != \"PyPy\" and sys_platform != \"cygwin\" and sys_platform != \"win32\"",
+      "purl": "pkg:pypi/uvloop@0.22.1",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "Apache-2.0",
+      "licenseDeclared": "Apache-2.0",
+      "normalizedMarkerIdentity": "sys_platform != \"darwin\"",
+      "purl": "pkg:pypi/watchdog@6.0.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/watchfiles@1.2.0",
+      "sourceScope": "source-lock-reference"
+    },
+    {
+      "artifactReviewRequired": false,
+      "licenseConcluded": "BSD-3-Clause",
+      "licenseDeclared": "BSD-3-Clause",
+      "normalizedMarkerIdentity": "unconditional",
+      "purl": "pkg:pypi/websockets@16.1.1",
+      "sourceScope": "source-lock-reference"
+    }
+  ],
+  "schemaVersion": 1,
+  "scope": {
+    "excludedDistributionScopes": [
+      "application-and-parser-images",
+      "base-and-operating-system-packages",
+      "emitted-web-bundles",
+      "external-service-images",
+      "model-weights-and-manifests",
+      "python-wheels-and-sdists"
+    ],
+    "kind": "source-lock-references",
+    "statement": "This policy classifies dependency references in the exact Python and npm source locks. It is not artifact redistribution clearance."
+  },
+  "waivers": []
+}

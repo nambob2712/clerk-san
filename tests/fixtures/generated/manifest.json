@@ -1,0 +1,13 @@
+{
+  "files": [
+    {
+      "columns": 13,
+      "path": "tests/fixtures/generated/universal-intake-1200x13.csv",
+      "rows": 1200,
+      "sha256": "16be10aa052abc85927f6b7e00c547d74eeca7b25183268e3c6df3c221422827"
+    }
+  ],
+  "format": 1,
+  "generated": true,
+  "generator": "eval.universal_intake_scale"
+}

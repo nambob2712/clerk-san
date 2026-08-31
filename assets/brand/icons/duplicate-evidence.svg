@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-labelledby="duplicate-evidence-title">
+  <title id="duplicate-evidence-title">Duplicate evidence</title>
+  <g stroke="currentColor" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M4 4.5h8v7.25H4z"/>
+    <path d="M12 12.25h8v7.25h-8z"/>
+    <path d="M8 8.25 12 12.25"/>
+    <path d="M7 15.75h3"/>
+    <path d="M14 8.25h3"/>
+  </g>
+  <rect x="10.75" y="11" width="2.5" height="2.5" fill="currentColor"/>
+</svg>

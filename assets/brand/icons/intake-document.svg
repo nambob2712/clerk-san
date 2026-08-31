@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-labelledby="intake-document-title">
+  <title id="intake-document-title">Document intake</title>
+  <g stroke="currentColor" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M9 3.5h6l3 3V11"/>
+    <path d="M15 3.5v3h3"/>
+    <path d="M3 15h6.75"/>
+    <path d="m6.5 12.5 2.5 2.5-2.5 2.5"/>
+    <path d="M12.25 15H21"/>
+  </g>
+  <rect x="9.75" y="13.75" width="2.5" height="2.5" fill="currentColor"/>
+</svg>

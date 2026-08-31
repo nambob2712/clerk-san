@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-labelledby="accounting-export-title">
+  <title id="accounting-export-title">Accounting export</title>
+  <g stroke="currentColor" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M3.5 5h13v14h-13z"/>
+    <path d="M3.5 9h13"/>
+    <path d="M8 5v14"/>
+    <path d="M12.5 5v14"/>
+    <path d="M17.75 12H22"/>
+    <path d="m19.75 9.75 2.25 2.25-2.25 2.25"/>
+  </g>
+  <rect x="15.25" y="10.75" width="2.5" height="2.5" fill="currentColor"/>
+</svg>

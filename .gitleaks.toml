@@ -1,0 +1,11 @@
+title = "Clerk-san generic secret policy"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "clerksan-synthetic-self-test"
+description = "Deterministic marker used to prove scanner execution and redaction"
+regex = '''CLERKSAN_TEST_SECRET_[A-Za-z0-9]{20}'''
+secretGroup = 0
+keywords = ["CLERKSAN_TEST_SECRET_"]

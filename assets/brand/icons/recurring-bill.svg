@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-labelledby="recurring-bill-title">
+  <title id="recurring-bill-title">Recurring bill</title>
+  <g stroke="currentColor" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M4 3.5h10v17l-2-1.5-2 1.5L8 19l-2 1.5L4 19z"/>
+    <path d="M7 8h4"/>
+    <path d="M7 12h4"/>
+    <path d="M16.5 7.5A4.5 4.5 0 0 1 21 12"/>
+    <path d="m19 9.75 2 2.25 2-2.25"/>
+    <path d="M21 15a4.5 4.5 0 0 1-4.5 3.5"/>
+  </g>
+  <rect x="13.25" y="10.75" width="2.5" height="2.5" fill="currentColor"/>
+</svg>

@@ -1,0 +1,185 @@
+name: clerksan
+
+# The default stack deliberately starts data services only. The api and worker
+# stay behind the "app" profile so model preparation is an explicit operator step.
+# PostgreSQL and Ollama have no host-port mappings; they communicate only over
+# this Compose network. The API is the sole future host-facing service and is
+# constrained to loopback.
+services:
+  db:
+    image: pgvector/pgvector:0.8.5-pg16-bookworm@sha256:1d533553fefe4f12e5d80c7b80622ba0c382abb5758856f52983d8789179f0fb
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-clerksan}
+      POSTGRES_USER: ${POSTGRES_USER:-clerksan}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 10s
+    networks:
+      - clerksan
+
+  ollama:
+    image: ollama/ollama:0.31.1@sha256:f1a705f2bd113fb8d15f85f7c217f0dc5f6bebda6b0cc42b82c3ad165ffcb9dc
+    restart: unless-stopped
+    environment:
+      OLLAMA_HOST: 0.0.0.0:11434
+      OLLAMA_KEEP_ALIVE: "0"
+    volumes:
+      - ollama_models:/root/.ollama
+    mem_limit: 8g
+    healthcheck:
+      test: ["CMD-SHELL", "ollama list >/dev/null 2>&1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 15s
+    networks:
+      - clerksan
+
+  # Dark until the universal activation gate is explicitly completed. This
+  # service has no network, application secrets, database, model, or store mount.
+  parser:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: parser-runtime
+    image: clerksan-parser:v2
+    profiles: ["universal"]
+    init: true
+    restart: on-failure
+    command: ["serve"]
+    environment:
+      CLERKSAN_PARSER_SOCKET_PATH: /run/clerksan-parser/parser.sock
+      CLERKSAN_PARSER_SOCKET_MODE: "0660"
+      CLERKSAN_PARSER_WALL_TIMEOUT_SECONDS: "15"
+      CLERKSAN_PARSER_CPU_SECONDS: "10"
+      # The Python parser process has a large virtual address space after
+      # loading pypdfium2/Pillow/openpyxl. 512 MiB causes every legacy binary
+      # format self-test to fail before parsing; retain the cgroup boundary but
+      # allow the bounded child address-space limit to reach supported formats.
+      CLERKSAN_PARSER_MEMORY_BYTES: "800000000"
+      CLERKSAN_PARSER_FILE_BYTES: "67108864"
+      CLERKSAN_PARSER_OPEN_FILES: "32"
+      CLERKSAN_PARSER_PROCESSES: "4"
+      CLERKSAN_PARSER_MAX_OUTPUT_BYTES: "4194303"
+    network_mode: "none"
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    pids_limit: 16
+    mem_limit: 880m
+    cpus: 1.0
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,nodev,size=64m
+    volumes:
+      - parser_socket:/run/clerksan-parser
+    healthcheck:
+      test: ["CMD", "python", "-m", "clerksan.ingest.parser_service", "probe"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 5s
+    stop_grace_period: 5s
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: clerksan:v2
+    profiles: ["app"]
+    init: true
+    restart: on-failure
+    command:
+      [
+        "sh",
+        "-c",
+        "python -m clerksan.db.migrate && exec uvicorn clerksan.api.main:app --host 0.0.0.0 --port 8000",
+      ]
+    environment:
+      CLERKSAN_DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-clerksan}@db:5432/${POSTGRES_DB:-clerksan}
+      CLERKSAN_DATABASE_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+      CLERKSAN_OLLAMA_URL: ${CLERKSAN_OLLAMA_URL:-http://ollama:11434}
+      CLERKSAN_STORAGE_DIR: /data/doc_store
+      CLERKSAN_INTAKE_MODE: ${CLERKSAN_INTAKE_MODE:-legacy}
+      CLERKSAN_PARSER_SOCKET_PATH: /run/clerksan-parser/parser.sock
+    depends_on:
+      db:
+        condition: service_healthy
+      ollama:
+        condition: service_healthy
+      parser:
+        condition: service_healthy
+        required: false
+    ports:
+      - "127.0.0.1:8000:8000"
+    volumes:
+      - doc_store:/data/doc_store
+      - parser_socket:/run/clerksan-parser:ro
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready', timeout=2)",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 20s
+    networks:
+      - clerksan
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: clerksan:v2
+    profiles: ["app"]
+    init: true
+    restart: on-failure
+    command: ["python", "-m", "clerksan.ingest.worker"]
+    environment:
+      CLERKSAN_DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-clerksan}@db:5432/${POSTGRES_DB:-clerksan}
+      CLERKSAN_DATABASE_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+      CLERKSAN_OLLAMA_URL: ${CLERKSAN_OLLAMA_URL:-http://ollama:11434}
+      CLERKSAN_STORAGE_DIR: /data/doc_store
+      CLERKSAN_INTAKE_MODE: ${CLERKSAN_INTAKE_MODE:-legacy}
+      CLERKSAN_PARSER_SOCKET_PATH: /run/clerksan-parser/parser.sock
+      CLERKSAN_WORKER_CONCURRENCY: ${CLERKSAN_WORKER_CONCURRENCY:-1}
+    depends_on:
+      # The API readiness gate includes the worker capability lease. Waiting
+      # for API health here would deadlock startup before the worker can issue
+      # that lease.
+      api:
+        condition: service_started
+      db:
+        condition: service_healthy
+      ollama:
+        condition: service_healthy
+      parser:
+        condition: service_healthy
+        required: false
+    volumes:
+      - doc_store:/data/doc_store
+      - parser_socket:/run/clerksan-parser:ro
+    networks:
+      - clerksan
+
+volumes:
+  pgdata:
+  ollama_models:
+  doc_store:
+  parser_socket:
+
+networks:
+  clerksan:
+    driver: bridge

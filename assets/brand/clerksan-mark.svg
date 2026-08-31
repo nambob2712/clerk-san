@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="clerksan-mark-title">
+  <title id="clerksan-mark-title">Clerk-san pivot mark</title>
+  <g fill="none" stroke="#20242C" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M7.5 2.5v19"/>
+    <path d="M9.5 12l10-7.5"/>
+    <path d="M9.5 12l10 7.5"/>
+  </g>
+  <rect x="5.5" y="10" width="4" height="4" fill="#4E5BD5"/>
+</svg>

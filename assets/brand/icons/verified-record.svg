@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-labelledby="verified-record-title">
+  <title id="verified-record-title">Verified record</title>
+  <g stroke="currentColor" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M5 3.5h10l4 4v13H5z"/>
+    <path d="M15 3.5v4h4"/>
+    <path d="M8 11h7"/>
+    <path d="M8 15h5"/>
+    <path d="M8 18h5"/>
+  </g>
+  <rect x="15.5" y="16.5" width="2.5" height="2.5" fill="currentColor"/>
+</svg>

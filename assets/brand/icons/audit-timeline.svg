@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" role="img" aria-labelledby="audit-timeline-title">
+  <title id="audit-timeline-title">Audit timeline</title>
+  <g stroke="currentColor" stroke-width="1.75" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M7 3v18"/>
+    <path d="M9.5 6h7"/>
+    <path d="M9.5 12h10"/>
+    <path d="M9.5 18h5"/>
+  </g>
+  <rect x="5.75" y="4.75" width="2.5" height="2.5" fill="currentColor"/>
+  <rect x="5.75" y="10.75" width="2.5" height="2.5" fill="currentColor"/>
+  <rect x="5.75" y="16.75" width="2.5" height="2.5" fill="currentColor"/>
+</svg>

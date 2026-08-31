@@ -1,0 +1,124 @@
+name: Source verification
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: source-verification-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Check out the exact submitted revision
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+          ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+
+      - name: Scan exact Git objects for prohibited data
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PUSH_BEFORE_SHA: ${{ github.event.before }}
+          PUSH_AFTER_SHA: ${{ github.event.after }}
+        run: |
+          set -euo pipefail
+          zero=0000000000000000000000000000000000000000
+          if [[ "$EVENT_NAME" == "pull_request" ]]; then
+            git cat-file -e "$PR_BASE_SHA^{commit}"
+            git cat-file -e "$PR_HEAD_SHA^{commit}"
+            python3 scripts/check-private-artifacts.py --range "$PR_BASE_SHA..$PR_HEAD_SHA"
+          elif [[ "$EVENT_NAME" == "push" && "$PUSH_BEFORE_SHA" != "$zero" ]]; then
+            git cat-file -e "$PUSH_BEFORE_SHA^{commit}"
+            git cat-file -e "$PUSH_AFTER_SHA^{commit}"
+            python3 scripts/check-private-artifacts.py --range "$PUSH_BEFORE_SHA..$PUSH_AFTER_SHA"
+          else
+            git cat-file -e "HEAD^{tree}"
+            python3 scripts/check-private-artifacts.py --tree HEAD
+          fi
+
+      - name: Prove generic secret detection and scan the submitted history
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          PUSH_BEFORE_SHA: ${{ github.event.before }}
+          PUSH_AFTER_SHA: ${{ github.event.after }}
+        run: |
+          set -euo pipefail
+          scripts/run-gitleaks.sh self-test
+          zero=0000000000000000000000000000000000000000
+          if [[ "$EVENT_NAME" == "pull_request" ]]; then
+            scripts/run-gitleaks.sh git-range . "$PR_BASE_SHA..$PR_HEAD_SHA"
+          elif [[ "$EVENT_NAME" == "push" && "$PUSH_BEFORE_SHA" != "$zero" ]]; then
+            scripts/run-gitleaks.sh git-range . "$PUSH_BEFORE_SHA..$PUSH_AFTER_SHA"
+          else
+            scripts/run-gitleaks.sh dir .
+          fi
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: "3.11"
+
+      - name: Set up pinned uv
+        uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
+        with:
+          version: "0.12.7"
+          enable-cache: false
+
+      - name: Install hash-locked Python dependencies
+        run: |
+          set -euo pipefail
+          uv venv --python 3.11 .venv
+          uv pip install --python .venv/bin/python --require-hashes --no-deps \
+            --requirement requirements.lock
+
+      - name: Verify Python source and tests
+        env:
+          CLERKSAN_INTAKE_MODE: legacy
+        run: |
+          set -euo pipefail
+          .venv/bin/ruff check clerksan tests eval scripts
+          .venv/bin/ruff format --check clerksan tests eval scripts
+          bash -n scripts/*.sh
+          .venv/bin/python -m pytest -q
+
+      - name: Verify source SBOM, license policy, and known vulnerabilities
+        run: |
+          set -euo pipefail
+          SOURCE_DATE_EPOCH=0 scripts/generate-sbom.sh /tmp/source-dependencies.spdx.json
+          .venv/bin/python scripts/generate-third-party-notices.py /tmp/THIRD_PARTY_NOTICES.md
+          cmp --silent sbom/source-dependencies.spdx.json /tmp/source-dependencies.spdx.json
+          cmp --silent THIRD_PARTY_NOTICES.md /tmp/THIRD_PARTY_NOTICES.md
+          .venv/bin/python scripts/check-license-policy.py
+          scripts/run-osv-scanner.sh sbom/source-dependencies.spdx.json
+
+      - name: Set up Node 24.15.0
+        uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: "24.15.0"
+
+      - name: Verify locked frontend
+        working-directory: web
+        run: |
+          set -euo pipefail
+          test "$(node --version)" = "v24.15.0"
+          test "$(npm --version)" = "11.12.1"
+          npm ci --ignore-scripts
+          npm audit --audit-level=high
+          npm test
+          npm run typecheck
+          npm run build

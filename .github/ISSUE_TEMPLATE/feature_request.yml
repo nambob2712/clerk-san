@@ -1,0 +1,34 @@
+name: Feature proposal
+description: Propose a focused change that preserves the local-first human-review boundary.
+title: "proposal: "
+labels: [proposal]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Keep examples synthetic and public-safe. Do not use this form for vulnerabilities or attach
+        real receipts, invoices, customer data, logs, or credentials. Issues are disabled for the
+        initial preview; this form is retained for a later maintainer-approved enablement.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user workflow is blocked or unnecessarily difficult?
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Describe the smallest useful behavior and its local data boundary.
+    validations:
+      required: true
+  - type: checkboxes
+    id: boundary
+    attributes:
+      label: Boundary confirmation
+      options:
+        - label: This proposal keeps AI output as a candidate until explicit human approval.
+          required: true
+        - label: I included no real documents, personal data, secrets, or vulnerability details.
+          required: true
